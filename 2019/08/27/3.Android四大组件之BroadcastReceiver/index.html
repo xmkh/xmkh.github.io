@@ -7,13 +7,20 @@
   
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="前言Hi，大家好，又双见面啦，上一期我们讲了如何使用Activity，肯定有不少小伙伴已经创建了属于自己的FirstActivity，那么这一期我们主要为大家介绍第二个重要组件BroadcastReceiver（广播接收器）。作为Android的四大组件之二，其应用场景非常多。下面，就详细介绍下 BroadcastReceiver 的相关知识。 1. 定义BroadcastReceiver（广播接">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/08/27/3.Android四大组件之BroadcastReceiver/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言Hi，大家好，又双见面啦，上一期我们讲了如何使用Activity，肯定有不少小伙伴已经创建了属于自己的FirstActivity，那么这一期我们主要为大家介绍第二个重要组件BroadcastReceiver（广播接收器）。作为Android的四大组件之二，其应用场景非常多。下面，就详细介绍下 BroadcastReceiver 的相关知识。 1. 定义BroadcastReceiver（广播接">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://ae01.alicdn.com/kf/Ha592ba6778ed4f86a3e3bc857df169e79.png">
+<meta property="og:image" content="https://ae01.alicdn.com/kf/H0964c63d48d146a89b26320bfae36fd09.png">
+<meta property="og:updated_time" content="2019-08-06T11:39:46.218Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="前言Hi，大家好，又双见面啦，上一期我们讲了如何使用Activity，肯定有不少小伙伴已经创建了属于自己的FirstActivity，那么这一期我们主要为大家介绍第二个重要组件BroadcastReceiver（广播接收器）。作为Android的四大组件之二，其应用场景非常多。下面，就详细介绍下 BroadcastReceiver 的相关知识。 1. 定义BroadcastReceiver（广播接">
+<meta name="twitter:image" content="https://ae01.alicdn.com/kf/Ha592ba6778ed4f86a3e3bc857df169e79.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,9 +67,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-3.Android四大组件之BroadcastReceiver" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-3.Android四大组件之BroadcastReceiver" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/27/3.Android四大组件之BroadcastReceiver/" class="article-date">
   <time datetime="2019-08-27T03:53:57.764Z" itemprop="datePublished">2019-08-27</time>
@@ -176,137 +181,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-Android四大组件之Activity" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/27/Android四大组件之Activity/" class="article-date">
-  <time datetime="2019-08-27T03:48:36.828Z" itemprop="datePublished">2019-08-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>Hi，大家好，又见面啦，上一期我们讲了如何安装AS，是不是已经有小伙伴迫不及待的创建了自己的项目并开始尝试了呢？那么这一期我们主要为大家介绍Activity。作为Android的四大组件之一，Activity占据着非常重要的作用。本文将围绕Android的生命周期、启动模式、基本配置等方面进行介绍。</p>
-<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>应用程序的每一个界面都是一个Activity，所以也有人称其为视图界面。从字面的意思去理解，Activity具有活动的意思，我们在应用中进行的操作都是集中在Activity上面完成，例如拨号、拍照、发送email、看地图。每一个activity被给设置到一个窗口，在上面可以绘制交互界面。 一个应用程序通常由多个activities组成，他们通常是松耦合关系，通常一个应用程序包含有一个主Activity，即点击桌面图标的时候首先进入的Activity。</p>
-<h4 id="Android创建与启动"><a href="#Android创建与启动" class="headerlink" title="Android创建与启动"></a>Android创建与启动</h4><p>以一个简单的Activity的创建与使用示说明：</p>
-<h5 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h5><p><img src="https://mmbiz.qlogo.cn/mmbiz_png/IhViaUSBq2n47xTx9yznWufKwB6NhDdQl3boZiaeJbsnpx0QyZFPGPiak9AKmj47x6vAsSDL8oLgqp32JGIMFcIiaQ/0?wx_fmt=png" alt="img"></p>
-<p>在Androd Studio 新建项目完成后，会自动创建一个 Java 文件，这个文件就是 Activity，因为它继承系统 framework 层提供的 Activity，这里 AppCompatActivity 是 Activity 的子类，我们的 MainActivity 间接继承 Activity。</p>
-<p>并且你会看到 MainActivity 强制重写了 onCreate 方法，在 onCreate 中，通过 setContentView 为 Activity 设置我们自定义的页面布局文件。</p>
-<h5 id="注册Activity"><a href="#注册Activity" class="headerlink" title="注册Activity"></a>注册Activity</h5><p>在 manifest 中注册Activity</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span></span></span><br><span class="line"><span class="tag">       <span class="attr">android:name</span>=<span class="string">".MainActivity"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">android:configChanges</span>=<span class="string">"orientation|screenSize"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">android:label</span>=<span class="string">"@string/app_name"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">android:launchMode</span>=<span class="string">"standard"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"myactoin2"</span> /&gt;</span></span><br><span class="line">           </span><br><span class="line">           <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+  
+    <a href="/2019/08/27/Android四大组件之Activity/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
 
-<p>Activity 必须在 AndroidManifest.xml 注册，如果没有注册这 Activity 就不能正常运行，其实在正常情况下在使用Android 中的四大组件（Activity,Service,BrocastReceiver,ContentProvider）时都需要再 AndroidManifest.xml 中注册。在上面的 xml 注册信息中，其中 <strong><inten-filter></inten-filter></strong>中指定</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span>   </span><br><span class="line"><span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>表明这个Activity是主Activity，在Android系统点击应用图标首先进入主Activity。</p>
-<h5 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h5><p>Activity是通过Intent用来在应用程序的Activity间启动、停止和传输。</p>
-<p>启动Activity的三种方法：</p>
-<p>1、显示启动</p>
-<p>在这里注册了第二个Activity —- SecondActivity ，并且牢记前面的注册操作，我们把 SecondActivity 注册到 Manifest 文件中。现在就可以在 MainActivity 中启动 SecondActivity。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, SecondActivity.class);</span><br><span class="line"><span class="comment">//通过上下文Context和SecondActivity.java类的Class对象，创建 Intent 对象 </span></span><br><span class="line">startActivity(intent);<span class="comment">//调用系统Framework 层提供的方法，启动 SecondActivity。</span></span><br></pre></td></tr></table></figure>
-
-<p>2、隐式启动</p>
-<p>若 SecondActivity 在AndroidManifest.xml文件中配置 intent-filter 的 action 和 category、data，如下：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>    </span><br><span class="line">   <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"myaction2"</span>/&gt;</span>    </span><br><span class="line">   <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span>/&gt;</span>    </span><br><span class="line">   <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"mycategory"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>那么可以通过如下方式启动 SecondActivity ：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="string">"myaction2"</span>);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
-
-<p>3、默认启动</p>
-<p>通过桌面图标点击应用图标进入程序的第一个Activity，因其启动方式有别上述两个方式，将其划分为第三类的启动方式。 若Activity在AndroidManifest.xml文件的intent-filter的action和category，如下：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>    </span><br><span class="line">   <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span>    </span><br><span class="line">   <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>那么，点击桌面的应用图标即可启动Activity。</p>
-<p>注：如果在N个Activity中都配置上述的action和category，那么桌面会有N个应用的图标，点击不同的图标会进入对应的Activity。</p>
-<h4 id="Activity的生命周期"><a href="#Activity的生命周期" class="headerlink" title="Activity的生命周期"></a>Activity的生命周期</h4><p>Activity 的生命周期如下图：</p>
-<p><img src="https://mmbiz.qlogo.cn/mmbiz_png/IhViaUSBq2n47xTx9yznWufKwB6NhDdQlNUchsPKvY0UMLY5jP8fWbo7N9icxrOv8NafdibEYbvMH9ia32gNt6yH8A/0?wx_fmt=png" alt="img"></p>
-<p>(1) onCreate</p>
-<p>表示Activity正在被创建，这是第一个执行的方法，在Activity的生命周期中只执行一次。在这个方法中做一些初始化工作，比如调用setContentView去加载界面布局，初始化Activity所需要的数据等。后续调用onStart()。</p>
-<p>(2) onRestart</p>
-<p>表示Activity正在重新启动，一般情况下，当前的Activity从不可见的状态变为可见状态时，onRestart就会被调用。这种情形一般是用户操作出现所致，比如用户按Home键回到桌面或者用户打开了一个新的Activity，这时候Activity就会暂停，接着用户又回到该Activity。后续调用onStart()。</p>
-<p>(3) onStart</p>
-<p>表示Activity正在被启动，即将开始。这个时候Activity是可见的，但是还没有出现在前台，不能和用户进行交互。这个时候可以理解为Activity已经显示出来，但是我们还看不到。后续的方法是onResume()。</p>
-<p>(4) onResume</p>
-<p>表示Activity可见，并且已经出现在前台并开始活动，能和用户正常进行交互。需要注意的是onStart和onResume的区别，二者都是Activity可见，但是onStart时Activity还在后台，而onResume时Activity到了前台了，这时候可以开启动画或者获取独占性设备的操作如打开相机、获取麦克风等。</p>
-<p>(5) onPause</p>
-<p>表示Activity由前台转到后台，正常情况下，紧接着onStop就会被调用。这时仍然可见。如果这时候快速地回到当前Activity，那么onResume会被调用，这类情况属于极端情况，用户操作很难重现这一场景。此时可以做一些存储数据，停止动画等操作，但是注意不能太耗时，如果太耗时会影响到新的Activity的显示。onPause是先执行完，新的Activity的onCreate才会执行。onResume和onPause相对应。</p>
-<p>(6) onStop</p>
-<p>表示Activity即将停止，当前的Activity对用户不在可见。可稍微做些重量级的回收操作。后续的操作可能是onRestart或者onDestroy或者一直保持这个状态。</p>
-<p>(7) onDestory</p>
-<p>表示Activity正在被销毁，是生命周期的最后一个回调，也是只调用一次。发生的条件是Activity本身已经执行完毕，或者系统资源不足需要回收资源将Activity销毁。</p>
-<p>我们考虑如下几类情况： 1、当一个Toast弹出的时候，会发生回调么？ No 2、当一个AlertDialog弹出的时候，会发生回调么？ No, 如果AlertDialog获取焦点，Activity会触发onWindowFocusChanged回调 3、当一个PopWindow弹出的时候，会发生回调么？ No, 如果PopWindow获取焦点，如mPopupWindow.setFocusable(true)，Activity会触发onWindowFocusChanged回调。 4.横竖屏切换时，会造成Activity被销毁然后重新创建。若在Activity配置android:configChanges=”orientation”，横竖屏切换时，只触发onConfigurationChanged( )回调，Activity不会被重新创建。</p>
-<h4 id="启动模式"><a href="#启动模式" class="headerlink" title="启动模式"></a>启动模式</h4><p>Activity 有四种启动模式，不同的模式，对应这 Activity 对象的创建于复用策略，可以在 Manifest 和 代码中指定 Activity 的启动模式。</p>
-<p>在探究什么是启动模式之前要弄请几个问题：</p>
-<ol>
-<li>启动模式原理（什么是任务栈）？</li>
-<li>为什么会需要启动模式？</li>
-<li>四种任务栈的特点？</li>
-<li>使用方式</li>
-<li>应用场景</li>
-</ol>
-<h5 id="什么是任务栈"><a href="#什么是任务栈" class="headerlink" title="什么是任务栈"></a>什么是任务栈</h5><p>Android 任务栈又称为 Task，它是一个栈类型的数据结构：先进先出。它用于存储我们的 Activity 组件。</p>
-<p>每次打开一个新的 Activity 或 退出一个 Activity 都会在任务栈的结构中添加或减少一个 Activity，一个任务栈包含了一个 Activity 集合。Android 系统可以通过 Task 有序的管理每个 Activity ，并决定那个 Activity 与用户进行交互：只用在栈顶的 Activity 才可以跟用户进行交互。</p>
-<p>在应用程序退出时，必须把所有任务栈中的 Activity 清除栈时，任务栈才会被销毁。当然任务栈可以移动到后台，并且保存每个 Activity 的状态。可以有序的给用户列出Activity的任务，同时也不会丢失 Activity 的信息。</p>
-<p>应用程序中可能不止一个任务栈，某系情况情况下，单独的一个 Activity 可以独享一个任务栈，也会存在一个任务栈的 Activity 可以来自不同的 App，同一个 App 中的 Activity 可能在不同的任务栈当中。</p>
-<h5 id="为什么会需要启动模式"><a href="#为什么会需要启动模式" class="headerlink" title="为什么会需要启动模式"></a>为什么会需要启动模式</h5><p>在应用程序开发过程中，一般都需要在多个 Activity 组件之间跳转，也可能需要在本应用中打开其他应用的可复用的 Activity。在开发过程中需要跳转到原来已经开启的 Activity 实例，此时我们希望这个 Activity 可以被重用而不是再重新创建一个新的 Activity 实例，<strong>但根据 Android 系统的默认行为，每次都会为我们创建一个新的 Activity 实例对象并添加到任务栈中，而且 Activity 的数据和信息状态都将会被保留</strong> 。</p>
-<p>我们可以在 MainActivity 中添加一个按钮，点击按钮跳转到 SecondActivity，然后在 SecondActivity 中添加两个按钮，点击一个按钮跳转到 MainActvity，在另一个按钮的点击事件中添加如下代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取ActivityMananger</span></span><br><span class="line">ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);</span><br><span class="line"><span class="comment">//获取任务栈 可能是多个</span></span><br><span class="line">List&lt;ActivityManager.RunningTaskInfo&gt; runningTasks = am.getRunningTasks(<span class="number">5</span>);</span><br><span class="line"><span class="comment">//获取当前的任务栈</span></span><br><span class="line">ActivityManager.RunningTaskInfo runningTaskInfo = runningTasks.get(<span class="number">0</span>);</span><br><span class="line"><span class="comment">//获取当前任务栈中 Activity 个数，即当前没有换存活的 Activity 实例个数。</span></span><br><span class="line"><span class="keyword">int</span> numRunning = runningTaskInfo.numRunning;</span><br><span class="line"><span class="comment">//Log 打印信息</span></span><br><span class="line">Log.e(<span class="string">"SecondActivity"</span>, <span class="string">"numRunning"</span> + numRunning);</span><br></pre></td></tr></table></figure>
-
-<p>上面代码不用深究，主要目的是想说明系统默认情况下，当前任务栈中存活的 Activity 实例个数。当我们在 MainActvity 中点击按钮跳转到 SecondActivity ，当跳转到 SecondActivity 在点击第一个按钮跳转到 MainActivity ，不断重复这个操作。最后当跳转的 SecondActivity 点击第一个按钮获取当前任务栈中的 Activity 个数。下面是方法和其对应运行时对应结果。</p>
-<p><img src="https://mmbiz.qlogo.cn/mmbiz_png/IhViaUSBq2n47xTx9yznWufKwB6NhDdQlSicn1CRRgkGpqhRniameYNT3JqwzMec9p8uKgy31oTlzOs3NbC7cfRPA/0?wx_fmt=png" alt="img"></p>
-<p>这样造成数据沉余，重复数据太多，最终可能还会导致内存溢出（OOM）。为解决这些问题，Android 系统提供了一套 Activity的启动模式来修改默认的 Activity 启动模式。</p>
-<h5 id="四种任务栈的特点"><a href="#四种任务栈的特点" class="headerlink" title="四种任务栈的特点"></a>四种任务栈的特点</h5><ul>
-<li>Standard 模式（一般模式）</li>
-</ul>
-<p>系统默认模式，每次启动一个Activity都会重新创建一个新的实例，而不管Activity是否已经创建了一个实例。</p>
-<ul>
-<li>SingTop (栈顶复用模式)</li>
-</ul>
-<p>栈顶复用模式，系统启动时，系统会启动当前栈顶Activity是不是要启动的Activity，如果是则不需要创建新的Activity而直接引用这个Activity，如果不是那么创建新的Activity。系统会回调Activity的onNewIntent()的方法。</p>
-<ul>
-<li>SingTask（栈内复用模式）</li>
-</ul>
-<p>栈内复用模式，如果栈内已经存在了一个Activity的实例，那么Activity不会被重新创建，同时这个Activity的onNewIntent()方法会被回调，并将该Activity实例置于栈顶，原先处于该实例顶部的Activity实例会被出栈销毁。如果是其他程序启动Activity，那么它会重新创建一个任务栈。</p>
-<ul>
-<li>SingleInstance（单一实例模式）</li>
-</ul>
-<p>单实例模式，是singleTask的加强版，具有singleTask所有特点，并且此种模式下Activity只有一个实例，并且只能单独的存在一个任务栈中。</p>
-<h5 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h5><p>启动模式一般分为两种：</p>
-<ol>
-<li>在 AndroidManifes.xml 中 ，找到声明 Activity 的位置，在 Actvity XML 属性 android:launchMode=”standard”,其他模式（singleTop，singleTask，singleInstance） 声明。</li>
-<li>在代码中跳转 Activity 时，利用 Intent 指定 Flag 标志位来使用启动模式。示例代码如下：</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, SecondActivity.class);</span><br><span class="line">intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);<span class="comment">//Flag</span></span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
-
-<p><strong>setFlags方法说明</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用一个新的Task来启动Activity，但每个Activity都将在一个新的Task中。</span></span><br><span class="line">Intent.FLAG_ACTIVITY_NEW_TASK   </span><br><span class="line"><span class="comment">//使用singleTop模式来启动一个Activity。  </span></span><br><span class="line">Intent.FLAG_ACTIVITY_SINGLE_TOP  </span><br><span class="line"><span class="comment">//使用singleTask模式来启动一个Activity。</span></span><br><span class="line">Intent.FLAG_ACTIVITY_CLEAR_TOP</span><br><span class="line"><span class="comment">//使用singleTask模式来启动一个Activity，使用这种方式启动Activity，当Activity启动其他Activity的时候，该Activity会被销毁，不入栈。  </span></span><br><span class="line">Intent.FLAG_ACTIVITY_NO_HISTORY</span><br><span class="line"><span class="comment">//方式无法指定 SingleInstance 模式，SingleInstances 只能在 AndroidManifest.xml 中声明。</span></span><br><span class="line">Intent.setFlags</span><br></pre></td></tr></table></figure>
-
-<h5 id="常见使用场景"><a href="#常见使用场景" class="headerlink" title="常见使用场景"></a>常见使用场景</h5><p>这里是一些在开发中常见的业务场景页面使用的页面启动模式：</p>
-<p><img src="https://mmbiz.qlogo.cn/mmbiz_png/IhViaUSBq2n47xTx9yznWufKwB6NhDdQlIFeciaHMmrVibqbD5HFcwLKPicpTcJcG2icRmoYEX87fMKEbhs3Abhic0Rg/0?wx_fmt=png" alt="img"></p>
-<h4 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h4><p>作为Android的四大组件之一，并且也是项目开发过程中最常用到的，小伙伴们要深刻理解，并把它灵活的运用到项目中，当然这些也是面试中会问到的最基础问题。</p>
-<p>PS:如果还有未看懂的小伙伴，欢迎加入我们的QQ技术交流群：<strong>892271582</strong>，里面有各种大神回答小伙伴们遇到的问题哦~</p>
-<p><img src="https://mmbiz.qlogo.cn/mmbiz_png/IhViaUSBq2n47xTx9yznWufKwB6NhDdQl0A9MMfvvibZfEfHUQfkEpXIsD8RwXw9NeLf2oNB3ChZ5KbG2ljntFtw/0?wx_fmt=png" alt="img"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/27/Android四大组件之Activity/" data-id="cjztaqh53000114htiyb9wx1j" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-
 
 </section>
         
